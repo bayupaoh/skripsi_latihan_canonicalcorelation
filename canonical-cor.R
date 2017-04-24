@@ -33,4 +33,3 @@ hasil <- (-1*(n-0.5*(p+q+1)))*(sum(log(1-lamda)))
 corxui<-matcor$Xcor%*%ai[,max]
 #cor(y,vi)
 coryvi<-matcor$Ycor%*%bi$vectors[,max]
-
