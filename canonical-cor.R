@@ -1,12 +1,13 @@
 getwd();
 setwd("~/Desktop/skripsi_latihan_canonicalcorelation/");
-
+#install library
 update.packages()
 install.packages("CCA")
 library(CCA)
+
+#ambil data
 data <- read.csv("data-skripsi.csv",sep = ";")
 colnames(data)<- c("suhu", "berat", "kelembapan", "amonia", "kematian", "ip","fcr", "hargajual")
-summary(data);
 kondisiling<- data[,1:5];
 kualitasayam <- data[,6:8];
 
@@ -29,6 +30,7 @@ p <- length(kondisiling)
 q <- length(kualitasayam)
 
 hasil <- (-1*(n-0.5*(p+q+1)))*(sum(log(1-lamda)))
+#menggunakan loading canonical
 #cor(x,ui)
 corxui<-matcor$Xcor%*%ai[,max]
 #cor(y,vi)
