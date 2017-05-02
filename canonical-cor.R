@@ -6,15 +6,15 @@ install.packages("CCA")
 library(CCA)
 
 #ambil data
-data <- read.csv("data-skripsi.csv",sep = ";")
-colnames(data)<- c("suhu", "berat", "kelembapan", "amonia", "kematian", "ip","fcr", "hargajual")
-kondisiling<- data[,1:5];
-kualitasayam <- data[,6:8];
+data <- read.csv("data-skripsi.csv",sep = ",")
+colnames(data)<- c("suhu", "kelembapan", "amonia", "kematian", "ip", "hargajual")
+kondisiling<- data[,1:4];
+kualitasayam <- data[,5:6];
 
 #cari matiks korelasi
 matcor<-matcor(kondisiling,kualitasayam)
-matcorxy <- matcor$XYcor[1:5,6:8]
-matcoryx <- matcor$XYcor[6:8,1:5]
+matcorxy <- matcor$XYcor[1:4,5:6]
+matcoryx <- matcor$XYcor[5:6,1:4]
 
 #ambil nilai lambda dan bi
 bi <- eigen(solve(matcor$Ycor)%*%matcoryx%*%solve(matcor$Xcor)%*%matcorxy)
@@ -35,3 +35,4 @@ hasil <- (-1*(n-0.5*(p+q+1)))*(sum(log(1-lamda)))
 corxui<-matcor$Xcor%*%ai[,max]
 #cor(y,vi)
 coryvi<-matcor$Ycor%*%bi$vectors[,max]
+

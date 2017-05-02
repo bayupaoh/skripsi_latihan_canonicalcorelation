@@ -1,9 +1,9 @@
 getwd();
 setwd("~/Desktop/skripsi_latihan_canonicalcorelation/");
 #import data
-data <- read.csv("data-skripsi.csv",sep = ";")
-colnames(data)<- c("suhu", "berat", "kelembapan", "amonia", "kematian", "ip","fcr", "hargajual")
+data <- read.csv("data-skripsi.csv",sep = ",")
+colnames(data)<- c("suhu", "kelembapan", "amonia", "kematian", "ip", "hargajual")
 #hitung nilai korelasi
-hasil=cor(data[,1],data[,5])
+hasil=cor(data[,2],data[,3])
 #pengujian hasil
-hasiluji=cor.test(data[,1],data[,5])
+hasiluji=cor.test(data[,2],data[,3])
