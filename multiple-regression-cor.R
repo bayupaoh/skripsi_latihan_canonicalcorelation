@@ -1,8 +1,13 @@
-getwd();
-setwd("~/Desktop/skripsi_latihan_canonicalcorelation/");
-#import data
-data <- read.csv("data-skripsi.csv",sep = ",")
+#install packages
+install.packages("RMySQL")
+library(RMySQL)
+
+#get data from mysql
+connection = dbConnect(MySQL(), user='root', password='', dbname='analisis_korelasi', host='localhost')
+query <- dbSendQuery(connection, "SELECT suhu,kelembapan,amonia,kematian,ip,hargaJual FROM dataset;")
+data <- fetch(query)
 colnames(data)<- c("suhu", "kelembapan", "amonia", "kematian", "ip","hargajual")
+
 #variabel x1,x2, dan x3
 suhu=data[,1]
 kelembapan=data[,2]

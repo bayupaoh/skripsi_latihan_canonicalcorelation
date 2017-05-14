@@ -1,13 +1,14 @@
-getwd();
-setwd("~/Desktop/skripsi_latihan_canonicalcorelation/");
-#install library
-#update.packages()
+#install packages
 install.packages("CCA")
 library(CCA)
+install.packages("RMySQL")
+library(RMySQL)
 
-#ambil data
-data <- read.csv("data-skripsi.csv",sep = ",")
-#colnames(data)<- c("suhu", "kelembapan", "amonia", "kematian", "ip", "hargajual")
+#get data from mysql
+connection = dbConnect(MySQL(), user='root', password='', dbname='analisis_korelasi', host='localhost')
+query <- dbSendQuery(connection, "SELECT suhu,kelembapan,amonia,kematian,ip,hargaJual FROM dataset;")
+data <- fetch(query)
+colnames(data)<- c("suhu", "kelembapan", "amonia", "kematian", "ip", "hargajual")
 kondisiling<- data[,1:3];
 kualitasayam <- data[,5:6];
 
