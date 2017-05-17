@@ -39,10 +39,11 @@ CREATE TABLE `dataset` (
 create table result(
 	  id int primary key auto_increment,
     pertanyaan text not null,
-    hasil text not null
+    hasil text not null.
+	koefisien double not null
 )engine=innoDB;
 
-insert into result values(null,1,"hasil mantap")
+insert into result values(null,1,"hasil mantap",0)
 
 --
 -- Dumping data untuk tabel `dataset`
