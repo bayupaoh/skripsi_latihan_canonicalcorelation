@@ -36,6 +36,14 @@ CREATE TABLE `dataset` (
   `hargaJual` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+create table result(
+	  id int primary key auto_increment,
+    pertanyaan text not null,
+    hasil text not null
+)engine=innoDB;
+
+insert into result values(null,1,"hasil mantap")
+
 --
 -- Dumping data untuk tabel `dataset`
 --
